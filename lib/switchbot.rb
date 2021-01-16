@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "switchbot/version"
+require_relative 'switchbot/version'
 
 module Switchbot
   class Error < StandardError; end
