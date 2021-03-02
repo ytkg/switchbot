@@ -1,0 +1,23 @@
+{
+    "statusCode": 100,
+    "body": {
+        "deviceList": [
+            {
+                "deviceId": "500291B269BE",
+                "deviceName": "Living Room Humidifier",
+                "deviceType": "Humidifier",
+                "enableCloudService": true,
+                "hubDeviceId": "000000000000"
+            }
+        ],
+        "infraredRemoteList": [
+            {
+                "deviceId": "02-202008110034-13",
+                "deviceName": "Living Room TV",
+                "remoteType": "TV",
+                "hubDeviceId": "FA7310762361"
+            }
+        ]
+    },
+    "message": "success"
+}

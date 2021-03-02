@@ -1,0 +1,11 @@
+{
+    "statusCode": 100,
+    "body": {
+        "deviceId": "C271111EC0AB",
+        "deviceType": "Meter",
+        "hubDeviceId": "FA7310762361",
+        "humidity": 52,
+        "temperature": 26.1
+    },
+    "message": "success"
+}
