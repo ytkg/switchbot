@@ -1,0 +1,26 @@
+{
+    "statusCode": 100,
+    "body": [
+        {
+            "sceneId": "T02-20200804130110",
+            "sceneName": "Close Office Devices"
+        },
+        {
+            "sceneId": "T02-202009221414-48924101",
+            "sceneName": "Set Office AC to 25"
+        },
+        {
+            "sceneId": "T02-202011051830-39363561",
+            "sceneName": "Set Bedroom to 24"
+        },
+        {
+            "sceneId": "T02-202011051831-82928991",
+            "sceneName": "Turn off home devices"
+        },
+        {
+            "sceneId": "T02-202011062059-26364981",
+            "sceneName": "Set Bedroom to 26 degree"
+        }
+    ],
+    "message": "success"
+}

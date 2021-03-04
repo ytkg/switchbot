@@ -34,6 +34,20 @@ module Switchbot
       )
     end
 
+    def scenes
+      request(
+        http_method: :get,
+        endpoint: 'v1.0/scenes'
+      )
+    end
+
+    def execute(scene_id:)
+      request(
+        http_method: :post,
+        endpoint: "/v1.0/scenes/#{scene_id}/execute"
+      )
+    end
+
     private
 
     def headers
