@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe Switchbot::Client do
+  include_context :api_variables
+
   describe '#devices' do
-    subject(:devices) { Switchbot::Client.new('token').devices }
+    subject(:devices) { client.devices }
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices')
@@ -41,7 +43,7 @@ RSpec.describe Switchbot::Client do
   end
 
   describe '#status' do
-    subject(:status) { Switchbot::Client.new('token').status(device_id: 'C271111EC0AB') }
+    subject { client.status(device_id: 'C271111EC0AB') }
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
@@ -64,11 +66,11 @@ RSpec.describe Switchbot::Client do
   end
 
   describe '#commands' do
-    subject(:commands) do
-      Switchbot::Client.new('token').commands(device_id: 'C271111EC0AB',
-                                              command: 'turnOn',
-                                              parameter: 'default',
-                                              command_type: 'command')
+    subject do
+      client.commands(device_id: 'C271111EC0AB',
+                      command: 'turnOn',
+                      parameter: 'default',
+                      command_type: 'command')
     end
 
     before do
@@ -82,7 +84,7 @@ RSpec.describe Switchbot::Client do
   end
 
   describe '#scenes' do
-    subject(:scenes) { Switchbot::Client.new('token').scenes }
+    subject { client.scenes }
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/scenes')
@@ -99,20 +101,20 @@ RSpec.describe Switchbot::Client do
             scene_name: 'Close Office Devices'
           },
           {
-            "scene_id": 'T02-202009221414-48924101',
-            "scene_name": 'Set Office AC to 25'
+            scene_id: 'T02-202009221414-48924101',
+            scene_name: 'Set Office AC to 25'
           },
           {
-            "scene_id": 'T02-202011051830-39363561',
-            "scene_name": 'Set Bedroom to 24'
+            scene_id: 'T02-202011051830-39363561',
+            scene_name: 'Set Bedroom to 24'
           },
           {
-            "scene_id": 'T02-202011051831-82928991',
-            "scene_name": 'Turn off home devices'
+            scene_id: 'T02-202011051831-82928991',
+            scene_name: 'Turn off home devices'
           },
           {
-            "scene_id": 'T02-202011062059-26364981',
-            "scene_name": 'Set Bedroom to 26 degree'
+            scene_id: 'T02-202011062059-26364981',
+            scene_name: 'Set Bedroom to 26 degree'
           }
         ]
       )
@@ -120,7 +122,7 @@ RSpec.describe Switchbot::Client do
   end
 
   describe '#status' do
-    subject(:execute) { Switchbot::Client.new('token').execute(scene_id: 'T02-202009221414-48924101') }
+    subject { client.execute(scene_id: 'T02-202009221414-48924101') }
 
     before do
       stub_request(:post, 'https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute')
