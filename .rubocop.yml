@@ -6,4 +6,5 @@ Style/Documentation:
 
 Metrics/BlockLength:
   Exclude:
+    - switchbot.gemspec
     - spec/**/*
