@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Switchbot
   class Scene
     attr_reader :client, :scene_id

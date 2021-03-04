@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Switchbot
   class Device
     attr_reader :client, :device_id
