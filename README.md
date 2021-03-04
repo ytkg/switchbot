@@ -46,6 +46,8 @@ client.devices
 # Get device status
 #   GET https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status
 client.status(device_id: 'C271111EC0AB')
+# or
+client.device('C271111EC0AB').status
 #=> {:status_code=>100,
 #    :body=>
 #     {:device_id=>"C271111EC0AB",
@@ -82,6 +84,8 @@ client.scenes
 # Execute manual scenes
 #   POST https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute
 client.execute(scene_id: 'T02-202009221414-48924101')
+# or
+client.scene('T02-202009221414-48924101').execute
 #=> {:status_code=>100,
 #    :body=>{},
 #    :message=>"success"}

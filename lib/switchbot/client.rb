@@ -15,6 +15,10 @@ module Switchbot
       )
     end
 
+    def device(device_id)
+      Device.new(client: self, device_id: device_id)
+    end
+
     def status(device_id:)
       request(
         http_method: :get,
@@ -41,6 +45,10 @@ module Switchbot
       )
     end
 
+    def scene(scene_id)
+      Scene.new(client: self, scene_id: scene_id)
+    end
+
     def execute(scene_id:)
       request(
         http_method: :post,
@@ -58,7 +66,7 @@ module Switchbot
     end
 
     def connection
-      @connection ||= Faraday.new(url: API_ENDPOINT, headers: headers) do |conn|
+      Faraday.new(url: API_ENDPOINT, headers: headers) do |conn|
         conn.request :json
       end
     end
