@@ -61,6 +61,30 @@ client.commands(device_id: '210', command: 'turnOn')
 #=> {:status_code=>100,
 #    :body=>{},
 #    :message=>"success"}
+
+# Get scene list
+#   GET https://api.switch-bot.com/v1.0/scenes
+client.scenes
+#=> {:status_code=>100,
+#    :body=>
+#     [{:scene_id=>"T02-20200804130110",
+#       :scene_name=>"Close Office Devices"},
+#      {:scene_id=>"T02-202009221414-48924101",
+#       :scene_name=>"Set Office AC to 25"},
+#      {:scene_id=>"T02-202011051830-39363561",
+#       :scene_name=>"Set Bedroom to 24"},
+#      {:scene_id=>"T02-202011051831-82928991",
+#       :scene_name=>"Turn off home devices"},
+#      {:scene_id=>"T02-202011062059-26364981",
+#       :scene_name=>"Set Bedroom to 26 degree"}],
+#    :message=>"success"}
+
+# Execute manual scenes
+#   POST https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute
+client.execute(scene_id: 'T02-202009221414-48924101')
+#=> {:status_code=>100,
+#    :body=>{},
+#    :message=>"success"}
 ```
 
 ## Development
