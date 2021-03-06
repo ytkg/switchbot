@@ -60,6 +60,8 @@ client.device('C271111EC0AB').status
 # Send device control commands
 #   POST https://api.switch-bot.com/v1.0/devices/210/commands
 client.commands(device_id: '210', command: 'turnOn')
+# or
+client.device('C271111EC0AB').commands(command: 'turnOn')
 #=> {:status_code=>100,
 #    :body=>{},
 #    :message=>"success"}

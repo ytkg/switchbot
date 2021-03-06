@@ -18,4 +18,22 @@ RSpec.describe Switchbot::Device do
       expect(client).to have_received(:status).with(device_id: device_id)
     end
   end
+
+  describe '#commands' do
+    let(:command) { 'turnOn' }
+    let(:parameter) { 'default' }
+    let(:command_type) { 'command' }
+
+    subject { device.commands(command: command, parameter: parameter, command_type: command_type) }
+
+    before do
+      allow(client).to receive(:commands)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:commands)
+        .with(device_id: device_id, command: command, parameter: parameter, command_type: command_type)
+    end
+  end
 end
