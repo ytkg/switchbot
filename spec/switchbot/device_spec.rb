@@ -36,4 +36,32 @@ RSpec.describe Switchbot::Device do
         .with(device_id: device_id, command: command, parameter: parameter, command_type: command_type)
     end
   end
+
+  describe '#on' do
+    subject { device.on }
+
+    before do
+      allow(client).to receive(:commands)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:commands)
+        .with(device_id: device_id, command: 'turnOn')
+    end
+  end
+
+  describe '#off' do
+    subject { device.off }
+
+    before do
+      allow(client).to receive(:commands)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:commands)
+        .with(device_id: device_id, command: 'turnOff')
+    end
+  end
 end
