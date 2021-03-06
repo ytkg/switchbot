@@ -16,5 +16,13 @@ module Switchbot
     def commands(command:, parameter: 'default', command_type: 'command')
       client.commands(device_id: device_id, command: command, parameter: parameter, command_type: command_type)
     end
+
+    def on
+      client.commands(device_id: device_id, command: 'turnOn')
+    end
+
+    def off
+      client.commands(device_id: device_id, command: 'turnOff')
+    end
   end
 end
