@@ -24,9 +24,11 @@ Or install it yourself as:
 require 'switchbot'
 
 client = Switchbot::Client.new('YOUR_TOKEN')
+```
 
-# Get device list
-#   GET https://api.switch-bot.com/v1.0/devices
+### Get device list
+GET https://api.switch-bot.com/v1.0/devices
+```ruby
 client.devices
 #=> {:status_code=>100,
 #    :body=>
@@ -42,9 +44,11 @@ client.devices
 #         :remote_type=>"TV",
 #         :hub_device_id=>"FA7310762361"}]},
 #    :message=>"success"}
+```
 
-# Get device status
-#   GET https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status
+### Get device status
+GET https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status
+```ruby
 client.status(device_id: 'C271111EC0AB')
 # or
 client.device('C271111EC0AB').status
@@ -56,9 +60,11 @@ client.device('C271111EC0AB').status
 #      :humidity=>52,
 #      :temperature=>26.1},
 #    :message=>"success"}
+```
 
-# Send device control commands
-#   POST https://api.switch-bot.com/v1.0/devices/210/commands
+### Send device control commands
+POST https://api.switch-bot.com/v1.0/devices/210/commands
+```ruby
 client.commands(device_id: '210', command: 'turnOn')
 # or
 client.device('C271111EC0AB').commands(command: 'turnOn')
@@ -67,9 +73,11 @@ client.device('C271111EC0AB').on
 #=> {:status_code=>100,
 #    :body=>{},
 #    :message=>"success"}
+```
 
-# Get scene list
-#   GET https://api.switch-bot.com/v1.0/scenes
+### Get scene list
+GET https://api.switch-bot.com/v1.0/scenes
+```ruby
 client.scenes
 #=> {:status_code=>100,
 #    :body=>
@@ -84,9 +92,11 @@ client.scenes
 #      {:scene_id=>"T02-202011062059-26364981",
 #       :scene_name=>"Set Bedroom to 26 degree"}],
 #    :message=>"success"}
+```
 
-# Execute manual scenes
-#   POST https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute
+### Execute manual scenes
+POST https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute
+```ruby
 client.execute(scene_id: 'T02-202009221414-48924101')
 # or
 client.scene('T02-202009221414-48924101').execute
