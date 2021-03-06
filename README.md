@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require 'switchbot'
 
 client = Switchbot::Client.new('YOUR_TOKEN')
