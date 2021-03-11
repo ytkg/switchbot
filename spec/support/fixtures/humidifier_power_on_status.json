@@ -1,0 +1,16 @@
+{
+  "statusCode": 100,
+  "body": {
+    "deviceId": "C271111EC0AB",
+    "deviceType": "Humidifier",
+    "hubDeviceId": "FA7310762361",
+    "nebulizationEfficiency": 1,
+    "humidity": 55,
+    "auto": true,
+    "childLock": false,
+    "sound": true,
+    "power": "on",
+    "temperature": "19.4"
+  },
+  "message": "success"
+}
