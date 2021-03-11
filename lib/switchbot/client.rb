@@ -56,6 +56,10 @@ module Switchbot
       )
     end
 
+    def light(device_id)
+      Light.new(client: self, device_id: device_id)
+    end
+
     private
 
     def headers
