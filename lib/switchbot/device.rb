@@ -24,5 +24,13 @@ module Switchbot
     def off
       client.commands(device_id: device_id, command: 'turnOff')
     end
+
+    def on?
+      status[:body][:power] == 'on'
+    end
+
+    def off?
+      !on?
+    end
   end
 end

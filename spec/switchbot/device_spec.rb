@@ -64,4 +64,42 @@ RSpec.describe Switchbot::Device do
         .with(device_id: device_id, command: 'turnOff')
     end
   end
+
+  describe '#on?' do
+    subject { device.on? }
+
+    before do
+      stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
+        .to_return(status: 200, body: fixture(fixture_filename))
+    end
+
+    context 'power on' do
+      let(:fixture_filename) { 'humidifier_power_on_status.json' }
+      it { is_expected.to eq true }
+    end
+
+    context 'power off' do
+      let(:fixture_filename) { 'humidifier_power_off_status.json' }
+      it { is_expected.to eq false }
+    end
+  end
+
+  describe '#off?' do
+    subject { device.off? }
+
+    before do
+      stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
+        .to_return(status: 200, body: fixture(fixture_filename))
+    end
+
+    context 'power on' do
+      let(:fixture_filename) { 'humidifier_power_on_status.json' }
+      it { is_expected.to eq false }
+    end
+
+    context 'power off' do
+      let(:fixture_filename) { 'humidifier_power_off_status.json' }
+      it { is_expected.to eq true }
+    end
+  end
 end
