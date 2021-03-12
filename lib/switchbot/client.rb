@@ -60,6 +60,10 @@ module Switchbot
       Light.new(client: self, device_id: device_id)
     end
 
+    def humidifier(device_id)
+      Humidifier.new(client: self, device_id: device_id)
+    end
+
     private
 
     def headers
