@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Switchbot::Device do
+RSpec.describe Switchbot::Light do
   include_context :api_variables
 
   let(:light) { client.light(device_id) }
