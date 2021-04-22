@@ -1,5 +1,15 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.3.0...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.4.0...main)
+
+## v0.4.0
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.3.0...v0.4.0)
+
+* Add Humidifier
+  * https://github.com/ytkg/switchbot/pull/7
+* Add Light
+  * https://github.com/ytkg/switchbot/pull/6
+* Add Device#on? and Device#off?
+  * https://github.com/ytkg/switchbot/pull/5
 
 ## v0.3.0
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.2.0...v0.3.0)
