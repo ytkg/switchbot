@@ -9,6 +9,7 @@ require_relative 'switchbot/client'
 require_relative 'switchbot/device'
 require_relative 'switchbot/scene'
 require_relative 'switchbot/light'
+require_relative 'switchbot/humidifier'
 
 module Switchbot
   class Error < StandardError; end
