@@ -8,6 +8,7 @@ require_relative 'switchbot/version'
 require_relative 'switchbot/client'
 require_relative 'switchbot/device'
 require_relative 'switchbot/scene'
+require_relative 'switchbot/bot'
 require_relative 'switchbot/light'
 require_relative 'switchbot/humidifier'
 
