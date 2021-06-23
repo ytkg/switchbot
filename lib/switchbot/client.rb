@@ -56,6 +56,10 @@ module Switchbot
       )
     end
 
+    def bot(device_id)
+      Bot.new(client: self, device_id: device_id)
+    end
+
     def light(device_id)
       Light.new(client: self, device_id: device_id)
     end
