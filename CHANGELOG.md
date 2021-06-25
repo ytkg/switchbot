@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.4.0...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.0...main)
+
+## v0.5.0
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.4.0...v0.5.0)
+
+* Add Bot
+  * https://github.com/ytkg/switchbot/pull/9
 
 ## v0.4.0
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.3.0...v0.4.0)
