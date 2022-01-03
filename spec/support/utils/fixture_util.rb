@@ -2,6 +2,6 @@
 
 module FixtureUtil
   def fixture(file)
-    File.open("spec/support/fixtures/#{file}").read
+    File.read("spec/support/fixtures/#{file}")
   end
 end
