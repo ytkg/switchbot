@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.0...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.1...main)
+
+## v0.5.1
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.0...v0.5.1)
+
+* Enable MFA requirement for gem releasing
+  * https://github.com/ytkg/switchbot/pull/11
 
 ## v0.5.0
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.4.0...v0.5.0)
