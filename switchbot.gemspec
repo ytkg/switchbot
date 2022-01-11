@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'SwitchBot API client for Ruby'
   spec.homepage      = 'https://github.com/ytkg/switchbot'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
@@ -32,8 +32,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'faraday', '~> 1.3.0'
-  spec.add_dependency 'faraday_middleware'
+  spec.add_dependency 'faraday', '>= 2.0.0'
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
