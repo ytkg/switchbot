@@ -70,7 +70,7 @@ RSpec.describe Switchbot::Device do
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
-        .to_return(status: 200, body: fixture(fixture_filename))
+        .to_return(status: 200, headers: response_headers, body: fixture(fixture_filename))
     end
 
     context 'power on' do
@@ -89,7 +89,7 @@ RSpec.describe Switchbot::Device do
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
-        .to_return(status: 200, body: fixture(fixture_filename))
+        .to_return(status: 200, headers: response_headers, body: fixture(fixture_filename))
     end
 
     context 'power on' do
