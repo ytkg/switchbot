@@ -8,7 +8,7 @@ RSpec.describe Switchbot::Client do
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices')
-        .to_return(status: 200, body: fixture('devices.json'))
+        .to_return(status: 200, headers: response_headers, body: fixture('devices.json'))
     end
 
     its([:status_code]) { should eq 100 }
@@ -47,7 +47,7 @@ RSpec.describe Switchbot::Client do
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status')
-        .to_return(status: 200, body: fixture('status.json'))
+        .to_return(status: 200, headers: response_headers, body: fixture('status.json'))
     end
 
     its([:status_code]) { should eq 100 }
@@ -75,7 +75,7 @@ RSpec.describe Switchbot::Client do
 
     before do
       stub_request(:post, 'https://api.switch-bot.com/v1.0/devices/C271111EC0AB/commands')
-        .to_return(status: 200, body: fixture('commands.json'))
+        .to_return(status: 200, headers: response_headers, body: fixture('commands.json'))
     end
 
     its([:status_code]) { should eq 100 }
@@ -88,7 +88,7 @@ RSpec.describe Switchbot::Client do
 
     before do
       stub_request(:get, 'https://api.switch-bot.com/v1.0/scenes')
-        .to_return(status: 200, body: fixture('scenes.json'))
+        .to_return(status: 200, headers: response_headers, body: fixture('scenes.json'))
     end
 
     its([:status_code]) { should eq 100 }
@@ -126,7 +126,7 @@ RSpec.describe Switchbot::Client do
 
     before do
       stub_request(:post, 'https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute')
-        .to_return(status: 200, body: fixture('execute.json'))
+        .to_return(status: 200, headers: response_headers, body: fixture('execute.json'))
     end
 
     its([:status_code]) { should eq 100 }

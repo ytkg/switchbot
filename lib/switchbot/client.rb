@@ -80,12 +80,13 @@ module Switchbot
     def connection
       Faraday.new(url: API_ENDPOINT, headers: headers) do |conn|
         conn.request :json
+        conn.response :json
       end
     end
 
     def request(http_method:, endpoint:, params: {})
       response = connection.public_send(http_method, endpoint, params)
-      JSON.parse(response.body).deep_transform_keys(&:underscore).deep_symbolize_keys
+      response.body.deep_transform_keys(&:underscore).deep_symbolize_keys
     end
   end
 end
