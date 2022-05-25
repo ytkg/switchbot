@@ -68,6 +68,10 @@ module Switchbot
       Humidifier.new(client: self, device_id: device_id)
     end
 
+    def color_bulb(device_id)
+      ColorBulb.new(client: self, device_id: device_id)
+    end
+
     private
 
     def headers
