@@ -1,5 +1,13 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.1...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.6.0...main)
+
+## v0.6.0
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.5.1...v0.6.0)
+
+* Add ColorBulb
+  * https://github.com/ytkg/switchbot/pull/14
+* :bomb: **[BREAKING CHANGE]** Update faraday v2 and Drop support ruby 2.5
+  * https://github.com/ytkg/switchbot/pull/12
 
 ## v0.5.1
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.5.0...v0.5.1)
