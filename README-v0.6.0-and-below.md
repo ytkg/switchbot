@@ -19,16 +19,15 @@ Or install it yourself as:
     $ gem install switchbot
 
 ## Usage
+
 ```ruby
 require 'switchbot'
 
-client = Switchbot::Client.new('YOUR_TOKEN', 'YOUR_SECRET')
+client = Switchbot::Client.new('YOUR_TOKEN')
 ```
 
-For v0.6.0 and below, refer to README-v0.6.0-and-below.md.
-
 ### Get device list
-GET https://api.switch-bot.com/v1.1/devices
+GET https://api.switch-bot.com/v1.0/devices
 ```ruby
 client.devices
 #=> {:status_code=>100,
@@ -48,7 +47,7 @@ client.devices
 ```
 
 ### Get device status
-GET https://api.switch-bot.com/v1.1/devices/C271111EC0AB/status
+GET https://api.switch-bot.com/v1.0/devices/C271111EC0AB/status
 ```ruby
 client.status(device_id: 'C271111EC0AB')
 # or
@@ -64,7 +63,7 @@ client.device('C271111EC0AB').status
 ```
 
 ### Send device control commands
-POST https://api.switch-bot.com/v1.1/devices/210/commands
+POST https://api.switch-bot.com/v1.0/devices/210/commands
 ```ruby
 client.commands(device_id: '210', command: 'turnOn')
 # or
@@ -77,7 +76,7 @@ client.device('C271111EC0AB').on
 ```
 
 ### Get scene list
-GET https://api.switch-bot.com/v1.1/scenes
+GET https://api.switch-bot.com/v1.0/scenes
 ```ruby
 client.scenes
 #=> {:status_code=>100,
@@ -96,7 +95,7 @@ client.scenes
 ```
 
 ### Execute manual scenes
-POST https://api.switch-bot.com/v1.1/scenes/T02-202009221414-48924101/execute
+POST https://api.switch-bot.com/v1.0/scenes/T02-202009221414-48924101/execute
 ```ruby
 client.execute(scene_id: 'T02-202009221414-48924101')
 # or

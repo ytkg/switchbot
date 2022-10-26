@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+require 'base64'
+require 'openssl'
 require 'faraday'
+require 'faraday/typhoeus'
 require 'active_support/all'
 require_relative 'switchbot/version'
 require_relative 'switchbot/client'

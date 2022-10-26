@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency 'activesupport'
   spec.add_dependency 'faraday', '>= 2.0.0'
+  spec.add_dependency 'faraday-typhoeus'
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
