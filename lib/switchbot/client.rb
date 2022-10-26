@@ -3,15 +3,17 @@
 module Switchbot
   class Client
     API_ENDPOINT = 'https://api.switch-bot.com'
+    API_VERSION = 'v1.1'
 
-    def initialize(token)
+    def initialize(token, secret)
       @token = token
+      @secret = secret
     end
 
     def devices
       request(
         http_method: :get,
-        endpoint: 'v1.0/devices'
+        endpoint: "/#{API_VERSION}/devices"
       )
     end
 
@@ -22,14 +24,14 @@ module Switchbot
     def status(device_id:)
       request(
         http_method: :get,
-        endpoint: "/v1.0/devices/#{device_id}/status"
+        endpoint: "/#{API_VERSION}/devices/#{device_id}/status"
       )
     end
 
     def commands(device_id:, command:, parameter: 'default', command_type: 'command')
       request(
         http_method: :post,
-        endpoint: "/v1.0/devices/#{device_id}/commands",
+        endpoint: "/#{API_VERSION}/devices/#{device_id}/commands",
         params: {
           command: command,
           parameter: parameter,
@@ -41,7 +43,7 @@ module Switchbot
     def scenes
       request(
         http_method: :get,
-        endpoint: 'v1.0/scenes'
+        endpoint: "/#{API_VERSION}/scenes"
       )
     end
 
@@ -52,7 +54,7 @@ module Switchbot
     def execute(scene_id:)
       request(
         http_method: :post,
-        endpoint: "/v1.0/scenes/#{scene_id}/execute"
+        endpoint: "/#{API_VERSION}/scenes/#{scene_id}/execute"
       )
     end
 
@@ -75,9 +77,16 @@ module Switchbot
     private
 
     def headers
+      t = "#{Time.now.to_i}000"
+      nonce = SecureRandom.alphanumeric
+      sign = Base64.strict_encode64(OpenSSL::HMAC.digest('sha256', @secret, "#{@token}#{t}#{nonce}"))
+
       {
         'User-Agent' => "Switchbot v#{Switchbot::VERSION} (https://github.com/ytkg/switchbot)",
-        'Authorization' => @token
+        'Authorization' => @token,
+        'T' => t,
+        'Sign' => sign,
+        'Nonce' => nonce
       }
     end
 
@@ -85,6 +94,7 @@ module Switchbot
       Faraday.new(url: API_ENDPOINT, headers: headers) do |conn|
         conn.request :json
         conn.response :json
+        conn.adapter :typhoeus, http_version: :httpv2_0 # rubocop:disable Naming/VariableNumber
       end
     end
 
