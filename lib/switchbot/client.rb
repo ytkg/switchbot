@@ -74,6 +74,10 @@ module Switchbot
       ColorBulb.new(client: self, device_id: device_id)
     end
 
+    def lock(device_id)
+      Lock.new(client: self, device_id: device_id)
+    end
+
     private
 
     def headers
