@@ -1,5 +1,20 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.6.0...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.7.0...main)
+
+## v0.7.0
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.6.0...v0.7.0)
+
+* Add Lock
+  * https://github.com/ytkg/switchbot/pull/16
+* :bomb: **[BREAKING CHANGE]** Support SwitchBot API v1.1
+  * https://github.com/ytkg/switchbot/pull/15
+  * The authentication method has been changed.
+
+    ```ruby
+    client = Switchbot::Client.new('YOUR_TOKEN', 'YOUR_SECRET')
+    ```
+
+    You must update the app to the latest version, V6.14 or later, in order to get the secret key.
 
 ## v0.6.0
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.5.1...v0.6.0)
