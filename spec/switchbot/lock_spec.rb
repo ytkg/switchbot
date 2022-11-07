@@ -8,6 +8,19 @@ RSpec.describe Switchbot::Lock do
   let(:parameter) { 'default' }
   let(:command_type) { 'command' }
 
+  describe '#status' do
+    subject { lock.status }
+
+    before do
+      allow(client).to receive(:status)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:status).with(device_id: device_id)
+    end
+  end
+
   describe '#lock' do
     subject { lock.lock }
 

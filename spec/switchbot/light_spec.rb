@@ -8,6 +8,34 @@ RSpec.describe Switchbot::Light do
   let(:parameter) { 'default' }
   let(:command_type) { 'command' }
 
+  describe '#on' do
+    subject { light.on }
+
+    before do
+      allow(client).to receive(:commands)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:commands)
+        .with(device_id: device_id, command: 'turnOn')
+    end
+  end
+
+  describe '#off' do
+    subject { light.off }
+
+    before do
+      allow(client).to receive(:commands)
+    end
+
+    it do
+      subject
+      expect(client).to have_received(:commands)
+        .with(device_id: device_id, command: 'turnOff')
+    end
+  end
+
   describe '#brightness_up' do
     subject { light.brightness_up }
 
