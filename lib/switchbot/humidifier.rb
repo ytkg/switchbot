@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 module Switchbot
-  class Humidifier < Device
+  class Humidifier
+    extend Forwardable
+
+    def_delegators :@device, :status, :commands, :on, :off, :on?, :off?
+
+    def initialize(client:, device_id:)
+      @device = Device.new(client: client, device_id: device_id)
+    end
+
     def mode(value)
       commands(command: 'setMode', parameter: value.to_s)
     end
