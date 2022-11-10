@@ -5,19 +5,17 @@ RSpec.describe Switchbot::Lock do
 
   let(:lock) { client.lock(device_id) }
   let(:device_id) { 'C271111EC0AB' }
-  let(:parameter) { 'default' }
-  let(:command_type) { 'command' }
 
   describe '#status' do
     subject { lock.status }
 
     before do
-      allow(client).to receive(:status)
+      allow(Switchbot::Device).to receive_message_chain(:new, :status)
     end
 
     it do
       subject
-      expect(client).to have_received(:status).with(device_id: device_id)
+      expect(Switchbot::Device.new).to have_received(:status)
     end
   end
 
@@ -25,13 +23,12 @@ RSpec.describe Switchbot::Lock do
     subject { lock.lock }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'lock', parameter: parameter, command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: 'lock')
     end
   end
 
@@ -39,13 +36,12 @@ RSpec.describe Switchbot::Lock do
     subject { lock.unlock }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'unlock', parameter: parameter, command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: 'unlock')
     end
   end
 end

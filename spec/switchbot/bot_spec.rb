@@ -5,19 +5,17 @@ RSpec.describe Switchbot::Bot do
 
   let(:bot) { client.bot(device_id) }
   let(:device_id) { 'C271111EC0AB' }
-  let(:parameter) { 'default' }
-  let(:command_type) { 'command' }
 
   describe '#status' do
     subject { bot.status }
 
     before do
-      allow(client).to receive(:status)
+      allow(Switchbot::Device).to receive_message_chain(:new, :status)
     end
 
     it do
       subject
-      expect(client).to have_received(:status).with(device_id: device_id)
+      expect(Switchbot::Device.new).to have_received(:status)
     end
   end
 
@@ -25,13 +23,12 @@ RSpec.describe Switchbot::Bot do
     subject { bot.on }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :on)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOn')
+      expect(Switchbot::Device.new).to have_received(:on)
     end
   end
 
@@ -39,13 +36,12 @@ RSpec.describe Switchbot::Bot do
     subject { bot.off }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :off)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOff')
+      expect(Switchbot::Device.new).to have_received(:off)
     end
   end
 
@@ -53,7 +49,7 @@ RSpec.describe Switchbot::Bot do
     subject { bot.on? }
 
     before do
-      allow(client).to receive(:status).and_return({ body: { power: 'on' } })
+      allow(Switchbot::Device).to receive_message_chain(:new, :on?).and_return(true)
     end
 
     it { is_expected.to eq true }
@@ -63,7 +59,7 @@ RSpec.describe Switchbot::Bot do
     subject { bot.off? }
 
     before do
-      allow(client).to receive(:status).and_return({ body: { power: 'off' } })
+      allow(Switchbot::Device).to receive_message_chain(:new, :off?).and_return(true)
     end
 
     it { is_expected.to eq true }
@@ -73,13 +69,12 @@ RSpec.describe Switchbot::Bot do
     subject { bot.press }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'press', parameter: parameter, command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: 'press')
     end
   end
 end

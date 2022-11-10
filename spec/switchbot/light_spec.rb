@@ -5,20 +5,17 @@ RSpec.describe Switchbot::Light do
 
   let(:light) { client.light(device_id) }
   let(:device_id) { 'C271111EC0AB' }
-  let(:parameter) { 'default' }
-  let(:command_type) { 'command' }
 
   describe '#on' do
     subject { light.on }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :on)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOn')
+      expect(Switchbot::Device.new).to have_received(:on)
     end
   end
 
@@ -26,13 +23,12 @@ RSpec.describe Switchbot::Light do
     subject { light.off }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :off)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOff')
+      expect(Switchbot::Device.new).to have_received(:off)
     end
   end
 
@@ -40,13 +36,12 @@ RSpec.describe Switchbot::Light do
     subject { light.brightness_up }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'brightnessUp', parameter: parameter, command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: 'brightnessUp')
     end
   end
 
@@ -54,13 +49,12 @@ RSpec.describe Switchbot::Light do
     subject { light.brightness_down }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'brightnessDown', parameter: parameter, command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: 'brightnessDown')
     end
   end
 end

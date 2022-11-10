@@ -6,18 +6,17 @@ RSpec.describe Switchbot::Humidifier do
   let(:humidifier) { client.humidifier(device_id) }
   let(:device_id) { 'C271111EC0AB' }
   let(:command) { 'setMode' }
-  let(:command_type) { 'command' }
 
   describe '#status' do
     subject { humidifier.status }
 
     before do
-      allow(client).to receive(:status)
+      allow(Switchbot::Device).to receive_message_chain(:new, :status)
     end
 
     it do
       subject
-      expect(client).to have_received(:status).with(device_id: device_id)
+      expect(Switchbot::Device.new).to have_received(:status)
     end
   end
 
@@ -25,13 +24,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.on }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :on)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOn')
+      expect(Switchbot::Device.new).to have_received(:on)
     end
   end
 
@@ -39,13 +37,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.off }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :off)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: 'turnOff')
+      expect(Switchbot::Device.new).to have_received(:off)
     end
   end
 
@@ -53,7 +50,7 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.on? }
 
     before do
-      allow(client).to receive(:status).and_return({ body: { power: 'on' } })
+      allow(Switchbot::Device).to receive_message_chain(:new, :on?).and_return(true)
     end
 
     it { is_expected.to eq true }
@@ -63,7 +60,7 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.off? }
 
     before do
-      allow(client).to receive(:status).and_return({ body: { power: 'off' } })
+      allow(Switchbot::Device).to receive_message_chain(:new, :off?).and_return(true)
     end
 
     it { is_expected.to eq true }
@@ -73,13 +70,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.mode(50) }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: command, parameter: '50', command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: command, parameter: '50')
     end
   end
 
@@ -87,13 +83,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.auto }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: command, parameter: 'auto', command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: command, parameter: 'auto')
     end
   end
 
@@ -101,13 +96,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.low }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: command, parameter: '101', command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: command, parameter: '101')
     end
   end
 
@@ -115,13 +109,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.medium }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: command, parameter: '102', command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: command, parameter: '102')
     end
   end
 
@@ -129,13 +122,12 @@ RSpec.describe Switchbot::Humidifier do
     subject { humidifier.high }
 
     before do
-      allow(client).to receive(:commands)
+      allow(Switchbot::Device).to receive_message_chain(:new, :commands)
     end
 
     it do
       subject
-      expect(client).to have_received(:commands)
-        .with(device_id: device_id, command: command, parameter: '103', command_type: command_type)
+      expect(Switchbot::Device.new).to have_received(:commands).with(command: command, parameter: '103')
     end
   end
 end
