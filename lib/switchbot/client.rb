@@ -78,6 +78,10 @@ module Switchbot
       Lock.new(client: self, device_id: device_id)
     end
 
+    def plug_mini(device_id)
+      PlugMini.new(client: self, device_id: device_id)
+    end
+
     private
 
     def headers
