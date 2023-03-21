@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](http://github.com/ytkg/switchbot/compare/v0.7.0...main)
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.8.0...main)
+
+## v0.8.0
+[full changelog](http://github.com/ytkg/switchbot/compare/v0.7.0...v0.8.0)
+
+* Add Plug Mini
+  * https://github.com/ytkg/switchbot/pull/21
 
 ## v0.7.0
 [full changelog](http://github.com/ytkg/switchbot/compare/v0.6.0...v0.7.0)
