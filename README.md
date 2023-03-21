@@ -1,6 +1,6 @@
 # Switchbot
 
-[SwichBot API](https://github.com/OpenWonderLabs/SwitchBotAPI) client for Ruby
+[SwitchBot API](https://github.com/OpenWonderLabs/SwitchBotAPI) client for Ruby
 
 ## Installation
 
