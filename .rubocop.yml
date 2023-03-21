@@ -9,3 +9,6 @@ Metrics/BlockLength:
   Exclude:
     - switchbot.gemspec
     - spec/**/*
+
+Gemspec/DevelopmentDependencies:
+  EnforcedStyle: gemspec
