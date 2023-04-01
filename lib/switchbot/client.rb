@@ -4,12 +4,13 @@ module Switchbot
   class Client
     API_VERSION = 'v1.1'
 
-    def initialize(token, secret)
-      @request = Request.new(token, secret)
+    def initialize(token = nil, secret = nil)
+      @token = token || ENV.fetch('SWITCHBOT_API_TOKEN', '')
+      @secret = secret || ENV.fetch('SWITCHBOT_API_SECRET', '')
     end
 
     def devices
-      @request.get("/#{API_VERSION}/devices")
+      request.get("/#{API_VERSION}/devices")
     end
 
     def device(device_id)
@@ -17,16 +18,16 @@ module Switchbot
     end
 
     def status(device_id:)
-      @request.get("/#{API_VERSION}/devices/#{device_id}/status")
+      request.get("/#{API_VERSION}/devices/#{device_id}/status")
     end
 
     def commands(device_id:, command:, parameter: 'default', command_type: 'command')
-      @request.post("/#{API_VERSION}/devices/#{device_id}/commands",
-                    params: { command: command, parameter: parameter, commandType: command_type })
+      request.post("/#{API_VERSION}/devices/#{device_id}/commands",
+                   params: { command: command, parameter: parameter, commandType: command_type })
     end
 
     def scenes
-      @request.get("/#{API_VERSION}/scenes")
+      request.get("/#{API_VERSION}/scenes")
     end
 
     def scene(scene_id)
@@ -34,7 +35,7 @@ module Switchbot
     end
 
     def execute(scene_id:)
-      @request.post("/#{API_VERSION}/scenes/#{scene_id}/execute")
+      request.post("/#{API_VERSION}/scenes/#{scene_id}/execute")
     end
 
     def bot(device_id)
@@ -59,6 +60,12 @@ module Switchbot
 
     def plug_mini(device_id)
       PlugMini.new(client: self, device_id: device_id)
+    end
+
+    private
+
+    def request
+      @request ||= Request.new(@token, @secret)
     end
   end
 end

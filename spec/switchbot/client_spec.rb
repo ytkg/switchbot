@@ -3,6 +3,27 @@
 RSpec.describe Switchbot::Client do
   include_context :api_variables
 
+  describe '#initialize' do
+    context 'when token and secret are given' do
+      subject { described_class.new('api_token', 'api_secret') }
+
+      it { expect(subject.instance_variable_get(:@token)).to eq 'api_token' }
+      it { expect(subject.instance_variable_get(:@secret)).to eq 'api_secret' }
+    end
+
+    context 'when token and secret are not given' do
+      subject { described_class.new }
+
+      before do
+        ENV['SWITCHBOT_API_TOKEN'] = 'api_token'
+        ENV['SWITCHBOT_API_SECRET'] = 'api_secret'
+      end
+
+      it { expect(subject.instance_variable_get(:@token)).to eq 'api_token' }
+      it { expect(subject.instance_variable_get(:@secret)).to eq 'api_secret' }
+    end
+  end
+
   describe '#devices' do
     subject(:devices) { client.devices }
 
