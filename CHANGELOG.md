@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Introduce `Switchbot::Request` for API requests and refactor `Switchbot::Client` to use it. ([#24](https://github.com/ytkg/switchbot/pull/24))
+- Allow `Switchbot::Client.new` to read `SWITCHBOT_API_TOKEN` and `SWITCHBOT_API_SECRET` when arguments are omitted. ([#25](https://github.com/ytkg/switchbot/pull/25))
+- Add GitHub `CODEOWNERS`. ([8b16882](https://github.com/ytkg/switchbot/commit/8b16882))
+- Add Dependabot configuration for GitHub Actions updates. ([995fe42](https://github.com/ytkg/switchbot/commit/995fe42))
+
+### Changed
+- Update README links and repository references. ([2a769fd](https://github.com/ytkg/switchbot/commit/2a769fd))
+- Extend CI matrix to include Ruby 3.3. ([#28](https://github.com/ytkg/switchbot/pull/28))
+- Run CI on `push` only by removing the `pull_request` trigger. ([#29](https://github.com/ytkg/switchbot/pull/29))
+- Reorganize this changelog to align with Keep a Changelog. ([b4bc16d](https://github.com/ytkg/switchbot/commit/b4bc16d))
+
+### Security
+- Bump `actions/checkout` from v3 to v4. ([#27](https://github.com/ytkg/switchbot/pull/27))
+- Bump `actions/checkout` from v4 to v5. ([#30](https://github.com/ytkg/switchbot/pull/30))
+- Bump `actions/checkout` from v5 to v6. ([#31](https://github.com/ytkg/switchbot/pull/31))
+
 ## [0.8.0] - 2023-03-21
 
 ### Added
