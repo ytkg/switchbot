@@ -22,7 +22,13 @@ Or install it yourself as:
 ```ruby
 require 'switchbot'
 
+# pass token and secret directly
 client = Switchbot::Client.new('YOUR_TOKEN', 'YOUR_SECRET')
+
+# or use environment variables
+ENV['SWITCHBOT_API_TOKEN'] = 'YOUR_TOKEN'
+ENV['SWITCHBOT_API_SECRET'] = 'YOUR_SECRET'
+client = Switchbot::Client.new
 ```
 
 For v0.6.0 and below, refer to [README-v0.6.0-and-below.md](https://github.com/ytkg/switchbot/blob/main/README-v0.6.0-and-below.md).
